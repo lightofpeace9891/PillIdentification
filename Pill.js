@@ -13,17 +13,12 @@ this.pillArr.push(new Pill("Aleve", "Oval", "Light Blue"));
 this.pillArr.push(new Pill("Adderall", "Oval", "Blue"));
 this.pillArr.push(new Pill("Advil PM", "Oval", "Blue"));
 
-// indexes of already added pills 
-indexesAdded = new Set();
-
 function getPillsByShape(shape) {
   console.log()
   console.log('shape func ran')
   var pillsByShape = [];
   for (i=0; i<this.pillArr.length; i++) {
     if (shape == this.pillArr[i].shape) {
-      console.log('index: ' + i + ' shape: ' + shape)
-      this.indexesAdded.add(i);
       pillsByShape.push(this.pillArr[i]);
     }
   }
@@ -36,7 +31,6 @@ function getPillsByColor(color) {
   var pillsByColor = [];
   for (i=0; i<this.pillArr.length; i++) {
     if ((color == this.pillArr[i].color) && (this.indexesAdded.has(i) == false)) {
-      console.log('index: ' + i + ' color: ' + color)
       pillsByColor.push(this.pillArr[i]);
     }
   }
@@ -47,8 +41,5 @@ results = [];
 pillsShape = this.getPillsByShape('Oval'); 
 this.results.push(pillsShape); 
 pillsColor = this.getPillsByColor('Light Blue');
-if (pillsColor.length > 0) {
-  this.results.push(pillsColor);
-}
-//this.resultSet.add(results);
+this.results.push(pillsColor);
 console.log(results);
